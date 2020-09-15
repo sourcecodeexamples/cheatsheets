@@ -1,0 +1,1325 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="My Quick Reference Docs">
+      
+      
+        <link rel="canonical" href="https://sivaprasadreddy.github.io/cheatsheets/devops/linux/">
+      
+      
+        <meta name="author" content="K Siva Prasad Reddy">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>Linux - Siva CheatSheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+      <link rel="manifest" href="../../manifest.webmanifest" crossorigin="use-credentials">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-commands" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://sivaprasadreddy.github.io/cheatsheets/" title="Siva CheatSheets" class="md-header-nav__button md-logo" aria-label="Siva CheatSheets">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Siva CheatSheets
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Linux
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/sivaprasadreddy/cheatsheets/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sivaprasadreddy/cheatsheets
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://sivaprasadreddy.github.io/cheatsheets/" title="Siva CheatSheets" class="md-nav__button md-logo" aria-label="Siva CheatSheets">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Siva CheatSheets
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/sivaprasadreddy/cheatsheets/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sivaprasadreddy/cheatsheets
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../learning/" title="Learning" class="md-nav__link">
+      Learning
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../shortcuts/" title="Shortcuts" class="md-nav__link">
+      Shortcuts
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Java
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Java" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java/ecosystem/" title="Ecosystem" class="md-nav__link">
+      Ecosystem
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java/maven/" title="Maven" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java/gradle/" title="Gradle" class="md-nav__link">
+      Gradle
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Kotlin
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kotlin" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Kotlin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kotlin/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      SpringBoot
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="SpringBoot" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        SpringBoot
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../springboot/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Python
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Python" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python/installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Ruby
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Ruby" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Ruby
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ruby/ruby/" title="Ruby" class="md-nav__link">
+      Ruby
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Go
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Go" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Go
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../golang/golang/" title="Go" class="md-nav__link">
+      Go
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      TypeScript
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="TypeScript" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        TypeScript
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../typescript/typescript/" title="TypeScript" class="md-nav__link">
+      TypeScript
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+    
+    <label class="md-nav__link" for="nav-11">
+      DevOps
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="DevOps" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        DevOps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../devops/" title="Tools" class="md-nav__link">
+      Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Linux" class="md-nav__link md-nav__link--active">
+      Linux
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-shorcuts" class="md-nav__link">
+    Terminal shorcuts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    Alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#touch-command" class="md-nav__link">
+    touch command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ls-command" class="md-nav__link">
+    ls command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    VIM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-command" class="md-nav__link">
+    find command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep-command" class="md-nav__link">
+    grep command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-password-less-login" class="md-nav__link">
+    SSH Password-less login
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ansible/" title="Ansible" class="md-nav__link">
+      Ansible
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Misc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Misc" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Misc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../misc/clean-architecture/" title="CleanArchitecture" class="md-nav__link">
+      CleanArchitecture
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-shorcuts" class="md-nav__link">
+    Terminal shorcuts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    Alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#touch-command" class="md-nav__link">
+    touch command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ls-command" class="md-nav__link">
+    ls command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    VIM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-command" class="md-nav__link">
+    find command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep-command" class="md-nav__link">
+    grep command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-password-less-login" class="md-nav__link">
+    SSH Password-less login
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/sivaprasadreddy/cheatsheets/edit/master/docs/devops/linux.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="linux-commands">Linux Commands</h1>
+<p>The default prompt for regular user is <strong>$</strong> and for root user is <strong>#</strong></p>
+<p>Ex: </p>
+<div class="codehilite"><pre><span></span><code><span class="err">[siva@siva-mint ~]$</span>
+<span class="err">[siva@siva-mint ~]#</span>
+</code></pre></div>
+
+
+<p><strong>How to determine whether a given Linux is 32 bit or 64 bit?</strong></p>
+<p><code>$ uname -m</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">x86_64 ==&gt; 64-bit kernel</span>
+<span class="err">i686   ==&gt; 32-bit kernel</span>
+</code></pre></div>
+
+
+<p><strong>Show distribution info:</strong></p>
+<p><code>$ uname -a</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">Linux localhost.localdomain 4.5.7-300.fc24.x86_64 #1 SMP Wed Jun 8 18:12:45 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></div>
+
+
+<p>Getting Help on commands:</p>
+<div class="codehilite"><pre><span></span><code>$ man <span class="nb">pwd</span>
+$ info <span class="nb">pwd</span>
+$ <span class="nb">help</span> <span class="nb">pwd</span>
+</code></pre></div>
+
+
+<p>Go to home to home directory: <code>$ cd ~</code></p>
+<p>How much time it took to execute the command: <code>$ time pwd</code></p>
+<p>To find out where a particular command is taken from:</p>
+<div class="codehilite"><pre><span></span><code>$ <span class="nb">type</span> bash
+bash is /bin/bash
+</code></pre></div>
+
+
+<p><strong>type</strong> command to check built-in or external command</p>
+<div class="codehilite"><pre><span></span><code>$ <span class="nb">type</span> <span class="nb">pwd</span>
+<span class="nb">pwd</span> is a shell <span class="nb">builtin</span>
+
+$ <span class="nb">type</span> bash
+bash is /bin/bash
+</code></pre></div>
+
+
+<p>To see the executed command history: <code>$ history</code></p>
+<p>To execute 23rd command: <code>$ !23</code></p>
+<p>To execute last command: <code>$ !!</code></p>
+<p>To edit history command by number, opens in VI: <code>$ fc 12</code></p>
+<p>To runs the most recent command that contains a particular string of characters: <code>$ !?string?</code></p>
+<p>To show current user:</p>
+<div class="codehilite"><pre><span></span><code>$ who am i
+siva     pts/0        <span class="m">2016</span>-08-22 <span class="m">10</span>:26 <span class="o">(</span><span class="m">192</span>.168.56.1<span class="o">)</span>
+</code></pre></div>
+
+
+<p><code>$ grep siva /etc/passwd</code></p>
+<div class="codehilite"><pre><span></span><code><span class="n">siva</span><span class="o">:</span><span class="n">x</span><span class="o">:</span><span class="mi">1000</span><span class="o">:</span><span class="mi">1000</span><span class="o">:</span><span class="n">Siva</span><span class="o">:/</span><span class="n">home</span><span class="sr">/siva:/bin/</span><span class="n">bash</span>
+</code></pre></div>
+
+
+<p><code>$ hostname</code>
+    siva-centos7</p>
+<p>ls command:</p>
+<div class="codehilite"><pre><span></span><code>$ ls -al
+$ ls --help
+$ ls --hide<span class="o">=</span>Desktop
+</code></pre></div>
+
+
+<p><code>$ date</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">Mon Aug 22 10:33:50 IST 2016</span>
+</code></pre></div>
+
+
+<p><code>$ date +'%d/%m/%y'</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">22/08/16</span>
+</code></pre></div>
+
+
+<p><code>$ date +'%A, %B %d, %Y'</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">Tuesday, October 21, 2014</span>
+</code></pre></div>
+
+
+<p><code>date --help</code></p>
+<p><code>$ id</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">uid=1000(siva) gid=1000(siva) groups=1000(siva),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023</span>
+</code></pre></div>
+
+
+<p>See which users logged into the system currently</p>
+<div class="codehilite"><pre><span></span><code>$ who -uH
+NAME     LINE         TIME             IDLE          PID COMMENT
+siva     :0           <span class="m">2016</span>-08-22 <span class="m">10</span>:11   ?          <span class="m">2575</span> <span class="o">(</span>:0<span class="o">)</span>
+siva     tty2         <span class="m">2016</span>-08-22 <span class="m">10</span>:12 <span class="m">00</span>:29        <span class="m">3443</span>
+siva     pts/0        <span class="m">2016</span>-08-22 <span class="m">10</span>:26   .          <span class="m">3935</span> <span class="o">(</span><span class="m">192</span>.168.56.1<span class="o">)</span>
+</code></pre></div>
+
+
+<p>List all aliases: <code>$ alias</code></p>
+<p>If a command is not in your PATH variable: <code>$ locate chage</code></p>
+<h2 id="terminal-shorcuts">Terminal shorcuts</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">Alt</span><span class="o">+</span><span class="n">F</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Word</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="w"></span>
+<span class="n">Alt</span><span class="o">+</span><span class="n">B</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Word</span><span class="w"> </span><span class="n">backward</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="n">backward</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="w"></span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">A</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Beginning</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">beginning</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="w"></span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">E</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="w"></span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">L</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Clear</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="n">Clear</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">leave</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">top</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">Alt</span><span class="o">+</span><span class="n">U</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Uppercase</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">uppercase</span><span class="p">.</span><span class="w"></span>
+<span class="n">Alt</span><span class="o">+</span><span class="n">L</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Lowercase</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">lowercase</span><span class="p">.</span><span class="w"></span>
+<span class="n">Alt</span><span class="o">+</span><span class="n">C</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Capitalize</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">capital</span><span class="w"></span>
+</code></pre></div>
+
+
+<h2 id="alias">Alias</h2>
+<div class="codehilite"><pre><span></span><code><span class="nb">alias</span> <span class="nv">sai</span><span class="o">=</span><span class="s1">&#39;sudo apt-get install&#39;</span>
+<span class="nb">unalias</span> sai
+</code></pre></div>
+
+
+<p>For all users</p>
+<div class="codehilite"><pre><span></span><code><span class="err">/etc/profile</span>
+<span class="err">/etc/bashrc</span>
+</code></pre></div>
+
+
+<p>User specific config files</p>
+<div class="codehilite"><pre><span></span><code><span class="err">~/.bash_profile</span>
+<span class="err">~/.bashrc</span>
+<span class="err">~/.bash_logout</span>
+</code></pre></div>
+
+
+<p>To reload config file: <code>$ source ~/.bashrc</code></p>
+<h2 id="touch-command">touch command</h2>
+<div class="codehilite"><pre><span></span><code>$ touch memo<span class="o">{</span><span class="m">1</span>,2,3,4,5<span class="o">}</span>
+$ ls
+memo1 memo2 memo3 memo4 memo5
+
+$ touch <span class="o">{</span>John,Bill,Sally<span class="o">}</span>-<span class="o">{</span>Breakfast,Lunch,Dinner<span class="o">}</span>
+$ ls
+Bill-Breakfast Bill-Lunch John-Dinner Sally-Breakfast Sally-Lunch
+Bill-Dinner John-Breakfast John-Lunch Sally-Dinner
+
+$ rm -f <span class="o">{</span>John,Bill,Sally<span class="o">}</span>-<span class="o">{</span>Breakfast,Lunch,Dinner<span class="o">}</span>
+
+$ touch <span class="o">{</span>a..f<span class="o">}{</span><span class="m">1</span>..5<span class="o">}</span>
+$ ls
+a1 a3 a5 b2 b4 c1 c3 c5 d2 d4 e1 e3 e5 f2 f4
+a2 a4 b1 b3 b5 c2 c4 d1 d3 d5 e2 e4 f1 f3 f5
+</code></pre></div>
+
+
+<h2 id="ls-command">ls command</h2>
+<div class="codehilite"><pre><span></span><code>$ ls -l
+total <span class="m">4</span>
+-rw-rw-r--. <span class="m">1</span> joe joe <span class="m">0</span> Dec <span class="m">18</span> <span class="m">13</span>:38 apple
+lrwxrwxrwx. <span class="m">1</span> joe joe <span class="m">5</span> Dec <span class="m">18</span> <span class="m">13</span>:46 pointer_to_apple -&gt; apple
+-rwxr-xr-x. <span class="m">1</span> joe joe <span class="m">0</span> Dec <span class="m">18</span> <span class="m">13</span>:37 scriptx.sh
+</code></pre></div>
+
+
+<p>To show hidden and non-hidden files:: <code>$ ls -a</code></p>
+<p>To list all files by time most recently modified: <code>$ ls -at</code></p>
+<p>To list files and append file-type indicators: <code>$ ls -F</code></p>
+<p><code>$ ls --hide=g*</code></p>
+<p><code>$ ls -ld $HOME/test/</code></p>
+<p>To list all files and directories recursively from current directory down: <code>$ ls -R</code></p>
+<p>To list files by size: <code>$ ls -S</code></p>
+<h2 id="permissions">Permissions</h2>
+<p>First character of permission:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">hyphen (-) : a regular file</span>
+<span class="err">d : a directory</span>
+<span class="err">l ( lowercase L) : a symbolic link</span>
+<span class="err">b (for a block device)</span>
+<span class="err">c (for a character device)</span>
+<span class="err">s (for a socket)</span>
+<span class="err">p (for a named pipe)</span>
+<span class="c">x: an executable file (a script or binary file that runs as a command)</span>
+</code></pre></div>
+
+
+<p>Changing permissions with chmod (numbers)</p>
+<p>each permission (read, write, and execute) is assigned a number</p>
+<p>r=4, w=2, and x=1</p>
+<p>For example, to make permissions wide open for yourself as owner, 
+you would set the first number to 7 (4+2+1), and then you would give the group and others read-only
+permission by setting both the second and third numbers to 4 (4+0+0), so that the final
+number is 744.</p>
+<div class="codehilite"><pre><span></span><code><span class="err"># chmod 777 file -&gt; rwxrwxrwx</span>
+<span class="err"># chmod 755 file -&gt; rwxr-xr-x</span>
+<span class="err"># chmod 644 file -&gt; rw-r--r-</span>
+<span class="err"># chmod 000 file -&gt; ---------</span>
+</code></pre></div>
+
+
+<p>All files and directories below, and including, the myapps directory</p>
+<div class="codehilite"><pre><span></span><code>$ chmod -R <span class="m">755</span> <span class="nv">$HOME</span>/myapps
+</code></pre></div>
+
+
+<p>Changing permissions with chmod (letters)</p>
+<p>user (u), group (g), other (o),all users (a).
+read (r), write (w), and execute (x)</p>
+<p>Current : (rwxrwxrwx).</p>
+<div class="codehilite"><pre><span></span><code>$ chmod a-w file -&gt; r-xr-xr-x
+$ chmod o-x file -&gt; rwxrwxrw-
+$ chmod go-rwx file -&gt; rwx------
+</code></pre></div>
+
+
+<p>Current: (---------).</p>
+<div class="codehilite"><pre><span></span><code>$ chmod u+rw files -&gt; rw-------
+$ chmod a+x files -&gt; --x--x--x
+$ chmod ug+rx files -&gt; r-xr-x---
+$ chmod -R o-w <span class="nv">$HOME</span>/myapps
+</code></pre></div>
+
+
+<p>Changing file ownership</p>
+<div class="codehilite"><pre><span></span><code><span class="err"># chown joe /home/joe/memo.txt</span>
+<span class="err"># ls -l /home/joe/memo.txt</span>
+<span class="err">-rw-r--r--. 1 joe root 0 Dec 19 11:23 /home/joe/memo.txt</span>
+</code></pre></div>
+
+
+<p>To change group as well</p>
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="n">chown</span> <span class="n">joe</span><span class="p">:</span><span class="n">joe</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">joe</span><span class="o">/</span><span class="n">memo</span><span class="p">.</span><span class="n">txt</span>
+<span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">joe</span><span class="o">/</span><span class="n">memo</span><span class="p">.</span><span class="n">txt</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r--. 1 joe joe 0 Dec 19 11:23 /home/joe/memo.txt</span>
+
+<span class="o">#</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">joe</span><span class="p">:</span><span class="n">joe</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">myusb</span>
+</code></pre></div>
+
+
+<p>Moving, Copying, and Removing Files</p>
+<div class="codehilite"><pre><span></span><code>$ mv abc def
+$ mv abc ~
+$ mv /home/joe/mymemos/ /home/joe/Documents/
+
+
+$ cp abc def
+$ cp abc ~
+$ cp -r /usr/share/doc/bash-completion* /tmp/a/
+$ cp -ra /usr/share/doc/bash-completion* /tmp/b/
+
+$ rm abc
+$ rm *
+$ rmdir /home/joe/nothing/
+$ rm -r /home/joe/bigdir/
+$ rm -rf /home/joe/hugedir/
+</code></pre></div>
+
+
+<p>The backslash causes any command to run unaliased.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">\rm bigdir</span>
+</code></pre></div>
+
+
+<h2 id="vim">VIM</h2>
+<div class="codehilite"><pre><span></span><code><span class="mi">0</span> <span class="p">(</span><span class="n">zero</span><span class="p">)</span> <span class="err">—</span> <span class="n">Moves</span> <span class="n">the</span> <span class="k">cursor</span> <span class="k">to</span> <span class="n">the</span> <span class="n">beginning</span> <span class="k">of</span> <span class="n">the</span> <span class="k">current</span> <span class="n">line</span><span class="p">.</span>
+<span class="err">$</span> <span class="n">Moves</span> <span class="n">the</span> <span class="k">cursor</span> <span class="k">to</span> <span class="n">the</span> <span class="k">end</span> <span class="k">of</span> <span class="n">the</span> <span class="k">current</span> <span class="n">line</span><span class="p">.</span>
+
+<span class="n">ZZ</span> <span class="err">—</span> <span class="n">Saves</span> <span class="n">the</span> <span class="k">current</span> <span class="n">changes</span> <span class="k">to</span> <span class="n">the</span> <span class="n">file</span> <span class="k">and</span> <span class="n">exits</span> <span class="k">from</span> <span class="n">vi</span><span class="p">.</span>
+<span class="p">:</span><span class="n">w</span> <span class="err">—</span> <span class="n">Saves</span> <span class="n">the</span> <span class="k">current</span> <span class="n">file</span> <span class="n">but</span> <span class="n">doesn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">exit</span> <span class="k">from</span> <span class="n">vi</span><span class="p">.</span>
+<span class="p">:</span><span class="n">wq</span> <span class="err">—</span> <span class="n">Works</span> <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="n">ZZ</span><span class="p">.</span>
+<span class="p">:</span><span class="n">q</span> <span class="err">—</span> <span class="n">Quits</span> <span class="n">the</span> <span class="k">current</span> <span class="n">file</span><span class="p">.</span> <span class="n">This</span> <span class="n">works</span> <span class="k">only</span> <span class="k">if</span> <span class="n">you</span> <span class="n">don</span><span class="err">’</span><span class="n">t</span> <span class="n">have</span> <span class="k">any</span> <span class="n">unsaved</span> <span class="n">changes</span><span class="p">.</span>
+<span class="p">:</span><span class="n">q</span><span class="o">!</span> <span class="err">—</span> <span class="n">Quits</span> <span class="n">the</span> <span class="k">current</span> <span class="n">file</span> <span class="k">and</span> <span class="n">doesn</span><span class="err">’</span><span class="n">t</span> <span class="n">save</span> <span class="n">the</span> <span class="n">changes</span> <span class="n">you</span> <span class="n">just</span> <span class="n">made</span> <span class="k">to</span> <span class="n">the</span> <span class="n">file</span><span class="p">.</span>
+</code></pre></div>
+
+
+<p><code>$ locate .bashrc</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">/etc/skel/.bashrc</span>
+<span class="err">/home/cnegus/.bashrc</span>
+</code></pre></div>
+
+
+<p><code># locate .bashrc</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">/etc/skel/.bashrc</span>
+<span class="err">/home/bill/.bashrc</span>
+<span class="err">/home/joe/.bashrc</span>
+<span class="err">/root/.bashrc</span>
+</code></pre></div>
+
+
+<h2 id="find-command">find command</h2>
+<p><code># find /etc -name passwd</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">/etc/pam.d/passwd</span>
+<span class="err">/etc/passwd</span>
+</code></pre></div>
+
+
+<p><code># find /etc -iname '*passwd*'</code></p>
+<div class="codehilite"><pre><span></span><code><span class="err">/etc/pam.d/passwd</span>
+<span class="err">/etc/passwd-</span>
+<span class="err">/etc/passwd.OLD</span>
+<span class="err">/etc/passwd</span>
+<span class="err">/etc/MYPASSWD</span>
+<span class="err">/etc/security/opasswd</span>
+</code></pre></div>
+
+
+<p>Finding files by size</p>
+<div class="codehilite"><pre><span></span><code>$ find /usr/share/ -size +10M
+$ find /mostlybig -size -1M
+$ find /bigdata -size +500M -size -5G -exec du -sh <span class="o">{}</span> <span class="se">\;</span>
+<span class="m">4</span>.1G /bigdata/images/rhel6.img
+606M /bigdata/Fedora-16-i686-Live-Desktop.iso
+560M /bigdata/dance2.avi
+</code></pre></div>
+
+
+<p>Finding files by user</p>
+<div class="codehilite"><pre><span></span><code>$ find /home -user chris -ls
+<span class="c1"># find /home -user chris -or -user joe -ls</span>
+<span class="c1"># find /etc -group ntp -ls</span>
+<span class="c1"># find /var/spool -not -user root -ls</span>
+</code></pre></div>
+
+
+<p>Finding files by permission</p>
+<div class="codehilite"><pre><span></span><code>$ find /bin -perm <span class="m">755</span> -ls
+$ find /home/chris/ -perm -222 -type d -ls
+$ find /myreadonly -perm +222 -type f
+$ find . -perm -002 -type f -ls
+</code></pre></div>
+
+
+<p>Finding files by date and time</p>
+<p>changed in past 10 minutes: <code>$ find /etc/ -mmin -10</code></p>
+<p>changed in the past three days: <code>$ find /bin /usr/bin /sbin /usr/sbin -ctime -3</code></p>
+<p>have not been accessed in more than 300 days: <code>$ find /var/ftp /var/www -atime +300</code></p>
+<p>The time options (-atime, -ctime, and -mtime)  based on the number of days</p>
+<p>The min options (-amin, -cmin, and -mmin) do the same in minutes.</p>
+<p>$ find /etc -iname iptables -exec echo "I found {}" \;</p>
+<div class="codehilite"><pre><span></span><code><span class="err">I found /etc/bash_completion.d/iptables</span>
+<span class="err">I found /etc/sysconfig/iptables</span>
+</code></pre></div>
+
+
+<p>$ find /usr/share -size +5M -exec du {} \; | sort -nr</p>
+<p>$ find /var/allusers/ -user joe -ok mv {} /tmp/joe/ \;</p>
+<p>-ok asks for confirmation</p>
+<h2 id="grep-command">grep command</h2>
+<div class="codehilite"><pre><span></span><code>$ grep desktop /etc/services
+$ grep -i desktop /etc/services
+</code></pre></div>
+
+
+<p>To search for lines that don’t contain a selected text string, use the -v option.</p>
+<div class="codehilite"><pre><span></span><code>$ grep -vi tcp /etc/services
+</code></pre></div>
+
+
+<p>-r : recursively</p>
+<p>-l : list filenames only</p>
+<p>$ grep -rli peerdns /usr/share/doc/</p>
+<p>$ ip addr show | grep inet</p>
+<h2 id="ssh-password-less-login">SSH Password-less login</h2>
+<ol>
+<li>Install OpenSSH on Server</li>
+</ol>
+<p>ex: sudo apt-get install openssh-server
+    sudo service ssh restart (or) sudo systemctl start ssh</p>
+<ol>
+<li>On client machine, generate ssh keys</li>
+</ol>
+<p>ssh-keygen -t rsa</p>
+<p>Copy public key (id_rsa.pub) from client machine to server's authorized_keys.</p>
+<p>ssh-copy-id <username>@<ssh-server-ip></p>
+<p>ssh-copy-id siva@192.168.0.103</p>
+<p>Now you can ssh without requiring to enter password:
+  ssh siva@192.168.0.103</p>
+<p>Note: Check configuration of SSH server in /etc/ssh/sshd_config file.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../devops/" title="Tools" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Tools
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../docker/" title="Docker" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Docker
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 K Siva Prasad Reddy
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/sivaprasadreddy" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/sivalabs" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://linkedin.com/in/siva-prasad-reddy-k-3a909172" target="_blank" rel="noopener" title="linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
