@@ -10,7 +10,7 @@
 
 <https://docs.spring.io/spring-boot/docs/current/maven-plugin/index.html>
 
-```xml
+```
 <plugin>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-maven-plugin</artifactId>
@@ -38,7 +38,7 @@
 
 <https://kotlinlang.org/docs/reference/using-maven.html>
 
-```xml
+```
 <build>
     <plugins>
         <plugin>
@@ -102,7 +102,7 @@
 
 <https://maven.apache.org/surefire/maven-surefire-plugin/>
 
-```xml
+```
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
@@ -121,7 +121,7 @@
 
 <https://maven.apache.org/surefire/maven-failsafe-plugin/>
 
-```xml
+```
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-failsafe-plugin</artifactId>
@@ -138,7 +138,7 @@
 
 <https://www.eclemma.org/jacoco/trunk/doc/maven.html>
 
-```xml
+```
 <project>
     <properties>
      <jacoco.destFile>${project.build.directory}/coverage-reports/aggregate.exec</jacoco.destFile>
@@ -252,7 +252,7 @@
 ### dependency-check-maven
 <https://jeremylong.github.io/DependencyCheck/index.html>
 
-```xml
+```
 <plugin>
     <groupId>org.owasp</groupId>
     <artifactId>dependency-check-maven</artifactId>
@@ -274,7 +274,7 @@
 ### maven-dependency-versions-check-plugin
 <https://github.com/ning/maven-dependency-versions-check-plugin>
 
-```xml
+```
 <plugin>
     <groupId>com.ning.maven.plugins</groupId>
     <artifactId>maven-dependency-versions-check-plugin</artifactId>
@@ -297,7 +297,7 @@
 ### flyway-maven-plugin
 <https://flywaydb.org/documentation/maven/>
 
-```xml
+```
 
 <project>
     <properties>
@@ -327,7 +327,7 @@
 ### maven-antrun-plugin
 <http://maven.apache.org/plugins/maven-antrun-plugin/>
 
-```xml
+```
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-antrun-plugin</artifactId>
@@ -381,7 +381,7 @@
 ### detekt-maven-plugin
 <https://github.com/Ozsie/detekt-maven-plugin>
 
-```xml
+```
 <plugin>
     <groupId>com.github.ozsie</groupId>
     <artifactId>detekt-maven-plugin</artifactId>
@@ -397,7 +397,7 @@
 ### maven-resources-plugin
 <https://maven.apache.org/plugins/maven-resources-plugin/>
 
-```xml
+```
 <plugin>
     <artifactId>maven-resources-plugin</artifactId>
     <executions>
@@ -429,7 +429,7 @@
 ### Sonar Maven Plugin
 <https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven>
 
-```xml
+```
 <propject>
     <properties>
       <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar</sonar.jdbc.url>
@@ -461,7 +461,7 @@
 ### docker-maven-plugin
 <https://github.com/fabric8io/docker-maven-plugin>
 
-```xml
+```
 <plugin>
     <groupId>io.fabric8</groupId>
     <artifactId>docker-maven-plugin</artifactId>
@@ -524,7 +524,7 @@
 
 ### git-commit-id-plugin
 
-```xml
+```
 <plugin>
     <groupId>pl.project13.maven</groupId>
     <artifactId>git-commit-id-plugin</artifactId>
@@ -545,7 +545,7 @@
 
 ### maven-javadoc-plugin
 
-```xml
+```
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-javadoc-plugin</artifactId>
@@ -570,10 +570,67 @@
 <https://maven.apache.org/enforcer/maven-enforcer-plugin/>
 
 ### maven-compiler-plugin
-### protobuf-maven-plugin
-### build-helper-maven-plugin
-### properties-maven-plugin
+The Compiler Plugin is used to compile the sources of your project. Sometimes when you may need to compile a certain project to a different version than what you are currently using. 
+
+<https://maven.apache.org/plugins/maven-compiler-plugin/>
+```
+
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>3.7.0</version>
+  <configuration>
+    <source>1.8</source>
+    <target>1.8</target>
+  </configuration>
+</plugin>
+```
 ### jooq-codegen-maven
+<https://www.jooq.org/doc/3.0/manual/code-generation/codegen-maven/>
+```
+<plugin>
+  <!-- Specify the maven code generator plugin -->
+  <!-- Use org.jooq                for the Open Source Edition
+           org.jooq.pro            for commercial editions with Java 17 support, 
+           org.jooq.pro-java-11    for commercial editions with Java 11 support,
+           org.jooq.pro-java-8     for commercial editions with Java 8 support,
+           org.jooq.trial          for the free trial edition with Java 17 support, 
+           org.jooq.trial-java-11  for the free trial edition with Java 11 support, 
+           org.jooq.trial-java-8   for the free trial edition with Java 8 support 
+         
+       Note: Only the Open Source Edition is hosted on Maven Central. 
+             Import the others manually from your distribution -->
+  <groupId>org.jooq</groupId>
+  <artifactId>jooq-codegen-maven</artifactId>
+  <version>3.15.1</version>
+
+  <executions>
+    <execution>
+      <id>jooq-codegen</id>
+      <phase>generate-sources</phase>
+      <goals>
+        <goal>generate</goal>
+      </goals>
+      <configuration>
+        ...
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+```
 ### maven-checkstyle-plugin
-### exec-maven-plugin
+```
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-checkstyle-plugin</artifactId>
+  <version>3.0.0</version>
+  <reportSets>
+    <reportSet>
+      <reports>
+        <report>checkstyle</report>
+      </reports>
+    </reportSet>
+  </reportSets>
+</plugin>
+```
 
